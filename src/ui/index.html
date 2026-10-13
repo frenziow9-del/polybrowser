@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' https: http: data:; style-src 'self'; script-src 'self'"
+    />
+    <title>PolyBrowser</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header id="chrome">
+      <div id="tabstrip">
+        <div id="tabs"></div>
+        <button id="new-tab" title="Новая вкладка (Ctrl+T)" aria-label="Новая вкладка">+</button>
+      </div>
+      <div id="navbar">
+        <button id="back" class="nav-btn" title="Назад (Alt+←)" aria-label="Назад">&#8592;</button>
+        <button id="forward" class="nav-btn" title="Вперёд (Alt+→)" aria-label="Вперёд">&#8594;</button>
+        <button id="reload" class="nav-btn" title="Обновить (Ctrl+R)" aria-label="Обновить">&#8635;</button>
+        <button id="home" class="nav-btn" title="Домашняя страница" aria-label="Домашняя страница">&#8962;</button>
+        <form id="addr-form" autocomplete="off">
+          <input
+            id="address"
+            type="text"
+            spellcheck="false"
+            placeholder="Введите адрес или поисковый запрос"
+          />
+        </form>
+      </div>
+    </header>
+    <script src="renderer.js"></script>
+  </body>
+</html>

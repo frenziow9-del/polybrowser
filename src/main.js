@@ -39,8 +39,12 @@ const MIME = {
   '.json': 'application/json; charset=utf-8',
 };
 
-function registerPolyProtocol() {
-  protocol.handle('poly', async (req) => {
+const polySessions = new WeakSet();
+
+function registerPolyProtocol(ses) {
+  if (!ses || polySessions.has(ses)) return;
+  polySessions.add(ses);
+  ses.protocol.handle('poly', async (req) => {
     try {
       const url = new URL(req.url);
       const host = url.hostname;
@@ -118,6 +122,7 @@ class Win {
     this.initialized = false;
     this.partition = incognito ? 'incog-' + Date.now() + '-' + Math.floor(Math.random() * 1e6) : 'persist:polybrowser';
     this.session = session.fromPartition(this.partition);
+    registerPolyProtocol(this.session);
 
     this.bw = new BrowserWindow({
       width: 1240,
@@ -833,7 +838,7 @@ function registerIpc() {
 app.whenReady().then(() => {
   store.init(app.getPath('userData'));
   applyTheme();
-  registerPolyProtocol();
+  registerPolyProtocol(session.defaultSession);
   registerIpc();
   const first = new Win(false);
   app.on('activate', () => {

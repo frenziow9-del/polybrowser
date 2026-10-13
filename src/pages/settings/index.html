@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' poly: data:; img-src 'self' poly: data:; style-src 'self' poly: 'unsafe-inline'; script-src 'self' poly:"
+    />
+    <title>Настройки</title>
+    <link rel="stylesheet" href="poly://shared/common.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="page-head">
+        <h1>Настройки</h1>
+      </div>
+
+      <div class="section">
+        <h2>Оформление</h2>
+        <label class="field">
+          <span>Тема</span>
+          <select id="theme">
+            <option value="system">Как в системе</option>
+            <option value="light">Светлая</option>
+            <option value="dark">Тёмная</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="section">
+        <h2>Поиск и запуск</h2>
+        <label class="field">
+          <span>Поисковая система</span>
+          <select id="engine">
+            <option value="duckduckgo">DuckDuckGo</option>
+            <option value="google">Google</option>
+            <option value="bing">Bing</option>
+            <option value="yandex">Яндекс</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Домашняя страница</span>
+          <input id="homepage" type="text" placeholder="poly://newtab/ (по умолчанию)" spellcheck="false" />
+        </label>
+        <label class="check">
+          <input id="bmBar" type="checkbox" />
+          <span>Показывать панель избранного</span>
+        </label>
+        <label class="check">
+          <input id="restore" type="checkbox" />
+          <span>Восстанавливать вкладки при запуске</span>
+        </label>
+      </div>
+
+      <div class="section">
+        <h2>Конфиденциальность</h2>
+        <div class="actions-row">
+          <button id="clearHistory" class="btn danger">Очистить историю</button>
+          <button id="clearDownloads" class="btn">Очистить загрузки</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>О браузере</h2>
+        <p class="about">
+          PolyBrowser на базе Electron (Chromium). Данные хранятся локально.
+        </p>
+      </div>
+    </div>
+    <script src="poly://shared/util.js"></script>
+    <script src="page.js"></script>
+  </body>
+</html>

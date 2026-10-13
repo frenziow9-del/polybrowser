@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; img-src 'self' https: http: data:; style-src 'self'; script-src 'self'"
+      content="default-src 'self'; img-src 'self' https: http: data:; style-src 'self' 'unsafe-inline'; script-src 'self'"
     />
     <title>PolyBrowser</title>
     <link rel="stylesheet" href="style.css" />
@@ -13,23 +13,77 @@
     <header id="chrome">
       <div id="tabstrip">
         <div id="tabs"></div>
-        <button id="new-tab" title="Новая вкладка (Ctrl+T)" aria-label="Новая вкладка">+</button>
+        <button id="new-tab" title="Новая вкладка (Ctrl+T)" aria-label="Новая вкладка">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg>
+        </button>
       </div>
+
       <div id="navbar">
-        <button id="back" class="nav-btn" title="Назад (Alt+←)" aria-label="Назад">&#8592;</button>
-        <button id="forward" class="nav-btn" title="Вперёд (Alt+→)" aria-label="Вперёд">&#8594;</button>
-        <button id="reload" class="nav-btn" title="Обновить (Ctrl+R)" aria-label="Обновить">&#8635;</button>
-        <button id="home" class="nav-btn" title="Домашняя страница" aria-label="Домашняя страница">&#8962;</button>
+        <button id="back" class="nav-btn" title="Назад (Alt+←)" aria-label="Назад">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+        </button>
+        <button id="forward" class="nav-btn" title="Вперёд (Alt+→)" aria-label="Вперёд">
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" /></svg>
+        </button>
+        <button id="reload" class="nav-btn" title="Обновить (Ctrl+R)" aria-label="Обновить">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+            <path d="M21 3v6h-6" />
+          </svg>
+        </button>
+        <button id="home" class="nav-btn" title="Домашняя страница" aria-label="Домашняя страница">
+          <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8" /><path d="M5 10v10h14V10" /></svg>
+        </button>
+
         <form id="addr-form" autocomplete="off">
+          <span id="secure" class="addr-icon" title="">
+            <svg viewBox="0 0 24 24"><path d="M6 10V8a6 6 0 0 1 12 0v2" /><rect x="5" y="10" width="14" height="10" rx="2" /></svg>
+          </span>
           <input
             id="address"
             type="text"
             spellcheck="false"
             placeholder="Введите адрес или поисковый запрос"
           />
+          <button id="star" type="button" class="addr-icon" title="Добавить в избранное (Ctrl+D)">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3.5l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17.4l-5.4 2.9 1-6.1L3.2 10l6.1-.9z" />
+            </svg>
+          </button>
         </form>
+
+        <button id="menu-btn" class="nav-btn" title="Меню" aria-label="Меню">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="1.7" />
+            <circle cx="12" cy="12" r="1.7" />
+            <circle cx="12" cy="19" r="1.7" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="bookmarks-bar" hidden></div>
+
+      <div id="find-bar" hidden>
+        <svg class="find-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>
+        <input id="find-input" type="text" placeholder="Найти на странице" spellcheck="false" />
+        <span id="find-count"></span>
+        <button id="find-prev" class="find-btn" title="Предыдущее">
+          <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6" /></svg>
+        </button>
+        <button id="find-next" class="find-btn" title="Следующее">
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg>
+        </button>
+        <button id="find-close" class="find-btn" title="Закрыть (Esc)">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+
+      <div id="tab-search" hidden>
+        <input id="tab-search-input" type="text" placeholder="Поиск по вкладкам" spellcheck="false" />
+        <div id="tab-search-list"></div>
       </div>
     </header>
+
     <script src="renderer.js"></script>
   </body>
 </html>

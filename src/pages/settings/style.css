@@ -1,0 +1,68 @@
+.section {
+  margin-bottom: 30px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px 18px 18px;
+  background: var(--panel);
+}
+
+.section h2 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 14px 0 10px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.field > span {
+  width: 190px;
+  flex: 0 0 190px;
+  color: var(--muted);
+}
+
+.field select,
+.field input[type="text"] {
+  flex: 1;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+}
+
+.field select:focus,
+.field input:focus {
+  border-color: var(--accent);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.check input {
+  width: 16px;
+  height: 16px;
+}
+
+.actions-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.about {
+  color: var(--muted);
+  font-size: 13px;
+}

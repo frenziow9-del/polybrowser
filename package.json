@@ -1,15 +1,15 @@
 {
   "name": "polybrowser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A small cross-platform web browser.",
   "homepage": "https://example.com/polybrowser",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --win --linux",
-    "dist:win": "electron-builder --win",
-    "dist:linux": "electron-builder --linux",
-    "dist:mac": "electron-builder --mac"
+    "dist": "electron-builder --win --linux --publish never",
+    "dist:win": "electron-builder --win --publish never",
+    "dist:linux": "electron-builder --linux --publish never",
+    "dist:mac": "electron-builder --mac --publish never"
   },
   "author": "PolyBrowser <dev@polybrowser.local>",
   "license": "MIT",
@@ -27,6 +27,13 @@
     "files": [
       "src/**/*",
       "package.json"
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "frenziow9-del",
+        "repo": "polybrowser"
+      }
     ],
     "win": {
       "icon": "build/icon.ico",
